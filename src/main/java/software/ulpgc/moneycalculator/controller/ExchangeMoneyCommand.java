@@ -1,6 +1,11 @@
-package software.ulpgc.moneycalculator;
+package software.ulpgc.moneycalculator.controller;
 
-public class ExchangeMoneyCommand implements Command{
+import software.ulpgc.moneycalculator.interfaces.*;
+import software.ulpgc.moneycalculator.model.Currency;
+import software.ulpgc.moneycalculator.model.ExchangeRate;
+import software.ulpgc.moneycalculator.model.Money;
+
+public class ExchangeMoneyCommand implements Command {
     private final MoneyDialog moneyDialog;
     private final CurrencyDialog currencyDialog;
     private final ExchangeRateLoader exchangeRateLoader;

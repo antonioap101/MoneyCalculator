@@ -1,4 +1,4 @@
-package software.ulpgc.moneycalculator;
+package software.ulpgc.moneycalculator.model;
 
 import java.time.LocalDate;
 
