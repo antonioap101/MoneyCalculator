@@ -12,10 +12,8 @@ public class JsonErrorHandler {
     }
 
     public static void handleErrorResponse(JsonObject jsonObject) {
-        JsonObject errorObject = jsonObject.getAsJsonObject("error");
-        int errorCode = errorObject.get("code").getAsInt();
-        String errorMessage = errorObject.get("info").getAsString();
-        System.out.println(RED_TEXT + "API Error (Code " + errorCode + "): " + errorMessage + RESET_TEXT);
+        String errorMessage = jsonObject.get("error").getAsString();
+        System.out.println(RED_TEXT + "API Error: " + errorMessage + RESET_TEXT);
     }
 }
 

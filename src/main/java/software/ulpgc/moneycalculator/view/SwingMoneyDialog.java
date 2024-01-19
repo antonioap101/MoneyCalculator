@@ -40,10 +40,12 @@ public class SwingMoneyDialog extends JPanel implements MoneyDialog {
 
     @Override
     public Money get() {
-        return new Money(toLong(amountField.getText()), currencyDialog.get());
+        return new Money(toDouble(amountField.getText()), currencyDialog.get());
     }
 
-    private long toLong(String text) {
-        return Long.parseLong(text);
+    private double toDouble(String text) {
+        return Double.parseDouble(text);
     }
+
+
 }

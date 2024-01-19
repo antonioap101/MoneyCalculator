@@ -24,7 +24,7 @@ public class ExchangeMoneyCommand implements Command {
         Currency currency = currencyDialog.get();
 
         ExchangeRate exchangeRate = exchangeRateLoader.load(money.currency(), currency);
-        Money result = new Money((long) (money.amount()*exchangeRate.rate()), currency);
+        Money result = new Money((money.amount()*exchangeRate.rate()), currency);
 
         moneyDisplay.show(result);
     }

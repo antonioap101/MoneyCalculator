@@ -17,7 +17,6 @@ public class FixerExchangeRateLoader implements ExchangeRateLoader {
         try {
             return new ExchangeRate(from, to, LocalDate.now(), toDouble(loadJson(from.toString(), to.toString())));
         } catch (IOException e) {
-            System.out.println("Exception!");
             return new ExchangeRate(from, to, LocalDate.now(), 0.0);
         }
     }
@@ -25,11 +24,13 @@ public class FixerExchangeRateLoader implements ExchangeRateLoader {
     double toDouble(String json) {
         JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
 
-        if (!jsonObject.has("success")) {
+        System.out.println(jsonObject);
+
+        if (!jsonObject.has("result")) {
             JsonErrorHandler.handleUnexpectedResponse();
             return 0.0;
         }
-        if (!jsonObject.get("success").getAsBoolean()) {
+        if (!jsonObject.get("result").getAsString().equals("success")) {
             JsonErrorHandler.handleErrorResponse(jsonObject);
             return 0.0;
         }
@@ -38,15 +39,14 @@ public class FixerExchangeRateLoader implements ExchangeRateLoader {
     }
 
     private double rateFrom(JsonObject jsonObject) {
-        return jsonObject.getAsJsonObject("info").get("rate").getAsDouble();
+        return jsonObject.get("conversion_rate").getAsDouble();
     }
 
     private String loadJson(String from, String to) throws IOException {
-        URL url = new URL("https://data.fixer.io/api/convert" +
-                "?access_key=" + FixerAPI.key +
-                "&from=" + from +
-                "&to=" + to +
-                "&amount=1");
+
+        URL url = new URL("https://v6.exchangerate-api.com/v6/"
+                + FixerAPI.key + "/pair/" +
+                from.split("-")[0] + "/" + to.split("-")[0]);
 
         try (InputStream is = url.openStream()) {
             return new String(is.readAllBytes());

@@ -7,6 +7,7 @@ import software.ulpgc.moneycalculator.interfaces.Command;
 import software.ulpgc.moneycalculator.interfaces.CurrencyDialog;
 import software.ulpgc.moneycalculator.interfaces.MoneyDialog;
 import software.ulpgc.moneycalculator.interfaces.MoneyDisplay;
+import software.ulpgc.moneycalculator.mocks.MockCurrencyLoader;
 import software.ulpgc.moneycalculator.model.Currency;
 
 import javax.swing.*;
@@ -49,7 +50,7 @@ public class SwingMain extends JFrame {
     }
 
     private void initCommands() {
-        List<Currency> currencies = new FixerCurrencyLoader().load();
+        List<Currency> currencies = new MockCurrencyLoader().load(); // FixerCurrencyLoader()
         Command exchangeMoneyCommand = new ExchangeMoneyCommand(
                 moneyDialog.define(currencies),
                 currencyDialog.define(currencies),
