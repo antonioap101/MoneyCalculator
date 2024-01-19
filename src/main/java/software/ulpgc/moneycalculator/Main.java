@@ -1,4 +1,4 @@
-package software.ulpgc.moneycalculator.view;
+package software.ulpgc.moneycalculator;
 
 import software.ulpgc.moneycalculator.controller.ExchangeMoneyCommand;
 import software.ulpgc.moneycalculator.controller.FixerCurrencyLoader;
@@ -8,6 +8,9 @@ import software.ulpgc.moneycalculator.interfaces.CurrencyDialog;
 import software.ulpgc.moneycalculator.interfaces.MoneyDialog;
 import software.ulpgc.moneycalculator.interfaces.MoneyDisplay;
 import software.ulpgc.moneycalculator.model.Currency;
+import software.ulpgc.moneycalculator.view.SwingCurrencyDialog;
+import software.ulpgc.moneycalculator.view.SwingMoneyDialog;
+import software.ulpgc.moneycalculator.view.SwingMoneyDisplay;
 import software.ulpgc.moneycalculator.view.components.CustomButtonPanel;
 import software.ulpgc.moneycalculator.view.theme.ColorTheme;
 
@@ -17,18 +20,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SwingMain extends JFrame {
+public class Main extends JFrame {
     private final Map<String, Command> commands = new HashMap<>();
     private MoneyDisplay moneyDisplay;
     private MoneyDialog moneyDialog;
     private CurrencyDialog currencyDialog;
 
     public static void main(String[] args) {
-        SwingMain main = new SwingMain();
+        Main main = new Main();
         main.setVisible(true);
     }
 
-    public SwingMain() {
+    public Main() {
         initFrame();
         initComponents();
         initCommands();

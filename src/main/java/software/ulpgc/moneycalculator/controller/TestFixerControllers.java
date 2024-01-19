@@ -6,7 +6,7 @@ import software.ulpgc.moneycalculator.model.Currency;
 
 import java.util.List;
 
-public class Main {
+public class TestFixerControllers {
     public static void main(String[] args) {
         List<Currency> currencies = new FixerCurrencyLoader().load();
 
