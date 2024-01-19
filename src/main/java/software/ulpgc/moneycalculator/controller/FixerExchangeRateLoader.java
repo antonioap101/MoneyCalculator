@@ -24,8 +24,6 @@ public class FixerExchangeRateLoader implements ExchangeRateLoader {
     double toDouble(String json) {
         JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
 
-        System.out.println(jsonObject);
-
         if (!jsonObject.has("result")) {
             JsonErrorHandler.handleUnexpectedResponse();
             return 0.0;

@@ -1,9 +1,11 @@
 package software.ulpgc.moneycalculator.view;
 
-import software.ulpgc.moneycalculator.model.Currency;
 import software.ulpgc.moneycalculator.interfaces.CurrencyDialog;
-import software.ulpgc.moneycalculator.model.Money;
 import software.ulpgc.moneycalculator.interfaces.MoneyDialog;
+import software.ulpgc.moneycalculator.model.Currency;
+import software.ulpgc.moneycalculator.model.Money;
+import software.ulpgc.moneycalculator.view.components.CustomTextField;
+import software.ulpgc.moneycalculator.view.theme.ColorTheme;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +16,8 @@ public class SwingMoneyDialog extends JPanel implements MoneyDialog {
     private CurrencyDialog currencyDialog;
 
     public SwingMoneyDialog() {
-        this.setLayout(new FlowLayout());
+        this.setLayout(new GridLayout(2, 1));
+        setBackground(ColorTheme.BACKGROUND_COLOR);
     }
 
     @Override
@@ -25,17 +28,15 @@ public class SwingMoneyDialog extends JPanel implements MoneyDialog {
     }
 
     private Component createCurrencyDialog(List<Currency> currencies) {
-        SwingCurrencyDialog dialog = new SwingCurrencyDialog();
+        SwingCurrencyDialog dialog = new SwingCurrencyDialog("From");
         dialog.define(currencies);
         this.currencyDialog = dialog;
         return dialog;
     }
 
     private Component createAmountField() {
-        JTextField textField = new JTextField();
-        textField.setColumns(5);
-        this.amountField = textField;
-        return textField;
+        this.amountField = new CustomTextField();
+        return amountField;
     }
 
     @Override
