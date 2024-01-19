@@ -27,7 +27,7 @@ public class SwingCurrencyDialog extends JPanel implements CurrencyDialog {
     }
 
     private Component createCurrencySelector(List<Currency> currencies) {
-        CustomComboBox selector = CustomComboBox.create(labelText);
+        CustomComboBox<Currency> selector = new CustomComboBox<>(labelText);
         for (Currency currency : currencies) selector.addItem(currency);
         this.currencySelector = selector;
         return selector.getComponent();

@@ -42,8 +42,8 @@ public class FixerCurrencyLoader implements CurrencyLoader {
 
 
     private List<Currency> currenciesFrom(JsonObject json) {
-        List<Currency> supportedCurrencies = json.get("supported_codes").getAsJsonArray().asList()
-                .stream()
+        List<Currency> supportedCurrencies = json.get("supported_codes")
+                .getAsJsonArray().asList().stream()
                 .map(currency -> {
                     JsonArray currencyArray = currency.getAsJsonArray();
                     return new Currency(currencyArray.get(0).getAsString(), currencyArray.get(1).getAsString());
