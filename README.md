@@ -35,6 +35,6 @@ Money Calculator es una aplicación de escritorio construida para proporcionar u
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
+Este proyecto está bajo la Licencia MIT. 
 
 ---
